@@ -1,63 +1,60 @@
-title: ChooseALicense.com
+---
+title: Choose a License
+description: Non-judgmental guidance on choosing a license for your open source project
 relative_permalinks: false
-markdown: redcarpet
+markdown: kramdown
+url: "https://choosealicense.com"
 
-rules:
+# Internationalization, powered by jekyll-polyglot.
+# The default language stays at the site root (e.g. /licenses/mit/); every other
+# language is generated under its own prefix (e.g. /fr/licenses/mit/) from the
+# same single source files — no per-language duplication of pages or license texts.
+# Adding a language = add its code below and a _data/i18n/<code>/ directory.
+languages: ["en", "fr", "es", "pt", "zh", "ko", "ar"]
+default_lang: "en"
+# Paths served once at the site root and never prefixed per language (assets, etc.),
+# so links to them keep working on translated pages.
+exclude_from_localization: ["assets", "favicon.ico", "robots.txt", "CNAME", ".nojekyll"]
 
-  required:
-    include-copyright:
-      description: Include a copy of the license and copyright notice with the code.
-      label:  License and copyright notice
-    document-changes: 
-      description: Indicate significant changes made to the code.
-      label: State Changes
-    disclose-source:
-      description: Source code must be made available when distributing the software. In the case of LGPL, the source for the library (and not the entire program) must be made available.
-      label: Disclose Source
-    library-usage:
-      description: The library may be used within a non-open-source application. 
-      label: Library usage
-    rename: 
-      description: You must change the name of the software if you modify it.
-      label: Rename
+collections:
+  licenses:
+    output: true
+    permalink: /licenses/:path/
 
-  permitted:
-    commercial-use: 
-      description: This software and derivatives may be used for commercial purposes.
-      label: Commercial Use
-    modifications: 
-      description: This software may be modified.
-      label: Modification
-    distribution: 
-      description: You may distribute this software.
-      label: Distribution
-    sublicense: 
-      description: You may grant a sublicense to modify and distribute this software to third parties not included in the license.
-      label: Sublicensing
-    private-use: 
-      description: You may use and modify the software without distributing it.
-      label: Private Use
-    patent-grant:
-      description: While all open source licenses have an implicit grant of patent rights, this license provides an express grant of patent rights from the contributor to the recipient.
-      label: Patent Grant
+defaults:
+  -
+    scope:
+      path: ""
+      type: "licenses"
+    values:
+      hidden: true
+      layout: license
 
-  forbidden:
-    trademark-use:
-      description: While this may be implicitly true of all licenses, this license explicitly states that you may NOT use the names, logos, or trademarks of contributors.
-      label: Use Trademark
-    no-liability: 
-      description: Software is provided without warranty and the software author/license owner cannot be held liable for damages.
-      label: Hold Liable
-    no-sublicense: 
-      description: You may not grant a sublicense to modify and distribute this software to third parties not included in the license.
-      label: Sublicensing
-    modifications:
-      description: This software may not be modified.
-      label: Modification
-    distribution:
-      description: You may not distribute this software.
-      label: Distribution
-    sublicense:
-      description: You may not grant a sublicense to modify and distribute this software to third parties not included in the license.
-      label: Sublicensing
+exclude:
+  - CNAME
+  - CONTRIBUTING.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.md
+  - Rakefile
+  - README.md
+  - i18n/README.md
+  - script
+  - vendor/bundle
+  - spec
+  - assets/vendor/selectivizr/tests
+  - assets/vendor/*/README.*
+  - license-list-XML
 
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-github-metadata # For 'Improve this page' links
+  - jekyll-polyglot # Internationalization (built via GitHub Actions, see .github/workflows/deploy.yml)
+
+sass:
+    style: :compressed
+
+twitter:
+  username: "@github"
